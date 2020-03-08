@@ -13,7 +13,8 @@ owner = discord.User(id=my_id)
 
 @client.event
 async def on_ready():
-    global text_chat = get_channel(text_channel)
+    global text_chat
+    text_chat = client.get_channel(text_channel)
     print ('logged in as')
     print (client.user.name)
     print (client.user.id)

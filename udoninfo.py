@@ -36,15 +36,15 @@ async def on_server_update(before,after):
 @client.event
 async def on_message(message):
     if message.content.startswith('!うどんください'): #役職の合言葉
-    role = discord.utils.get(message.author.server.roles, name="メンバー")  #メッセージの主のの役職に移動先の役職を与える
-    chat_channel = client.get_channel('532073311329583106')
+    role = discord.utils.get(message.author.guild.roles, name="メンバー")  #メッセージの主のの役職に移動先の役職を与える
+    t_channel = client.get_channel('532073311329583106')
     mg = "認証中・・・"
-    await client.send_message(chat_channel, mg)
+    await t_channel.send(mg)
     sleep(5)
-    await client.add_roles(message.author, role)
+    await message.author.add_roles(message.author, role)
     mh = "役職の付与を行いました。"
     await client.send_message(message.author, mh)
     sleep(1)
     mr = message.author.name + "さんが役職変更されました"
-    await client.send_message(owner, mr)
+    await guild.owner.send(owner, mr)
 client.run(token)

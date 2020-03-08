@@ -41,10 +41,10 @@ async def on_message(message):
     mg = "認証中・・・"
     await t_channel.send(mg)
     sleep(5)
-    await message.author.add_roles(message.author, role)
+    await message.author.add_roles(role)
     mh = "役職の付与を行いました。"
-    await client.send_message(message.author, mh)
+    await message.author.send(mh)
     sleep(1)
     mr = message.author.name + "さんが役職変更されました"
-    await guild.owner.send(owner, mr)
+    await message.guild.owner.send(mr)
 client.run(token)
